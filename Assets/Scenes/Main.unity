@@ -300,7 +300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.08811597, y: -0.017384542, z: 0.0015380736, w: 0.9959573}
-  m_LocalPosition: {x: 0, y: 0, z: -19.05}
+  m_LocalPosition: {x: 0, y: 0, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 1512030224}
   - component: {fileID: 1512030223}
   - component: {fileID: 1512030222}
+  - component: {fileID: 1512030225}
   m_Layer: 0
   m_Name: SpawnSpike
   m_TagString: Untagged
@@ -648,12 +649,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512030221}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.84, z: -7.17}
+  m_LocalPosition: {x: 0, y: 2.84, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!136 &1512030225
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512030221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.43336287
+  m_Height: 0.95682764
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.026982546, z: 0.5215863}
 --- !u!1 &1521584275
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +774,7 @@ GameObject:
   - component: {fileID: 1584891134}
   - component: {fileID: 1584891133}
   - component: {fileID: 1584891132}
+  - component: {fileID: 1584891136}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -840,6 +856,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1584891136
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584891131}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1617782403
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +883,7 @@ GameObject:
   - component: {fileID: 1617782406}
   - component: {fileID: 1617782405}
   - component: {fileID: 1617782404}
+  - component: {fileID: 1617782407}
   m_Layer: 0
   m_Name: CaveSpike
   m_TagString: Untagged
@@ -913,12 +946,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617782403}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2, y: 2, z: 5}
+  m_LocalPosition: {x: 2, y: 2, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!136 &1617782407
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617782403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.75
+  m_Height: 0.9
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.5000001}
 --- !u!1 &2030492817
 GameObject:
   m_ObjectHideFlags: 0
