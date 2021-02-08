@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float upForce = 500;
-    private float sideStep = 1;
+    private float sideStep = 500;
     Rigidbody playerRb;
 
     void Start()
@@ -15,27 +15,36 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
+        if(GameManager.Instance.CurrentGameState == GameManager.GameState.RUNNING)
+        {
+            MovePlayer();
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-
+        GameManager.Instance.UpdateState(GameManager.GameState.POSTGAME);
     }
 
     void MovePlayer()
     {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            transform.rotation = Quaternion.identity;
+            playerRb.velocity = Vector3.zero;
             playerRb.AddForce(Vector3.up * upForce);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.Translate(new Vector3(-sideStep, 0, 0));
+            transform.rotation = Quaternion.Euler(0,0,-40);
+            playerRb.AddForce(Vector3.left * sideStep);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.Translate(new Vector3(sideStep, 0, 0));
+            transform.rotation = Quaternion.Euler(0,0,40);
+            playerRb.AddForce(Vector3.right * sideStep);
         }
     }
 }

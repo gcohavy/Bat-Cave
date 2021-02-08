@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player;
-    private float cameraSpeed = 10;
+    public Rigidbody player;
+    private float cameraSpeed = 2;
+    private float xBound = 7;
 
     // Start is called before the first frame update
     void Start()
@@ -14,13 +15,13 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if(player.transform.position.x < transform.position.x && transform.position.x > -8)
+        if(player.transform.position.x < transform.position.x && transform.position.x > -xBound)
         {
             transform.Translate(Vector3.left * Time.deltaTime * cameraSpeed);
         }
-        else if(player.transform.position.x > transform.position.x && transform.position.x < 8)
+        else if(player.transform.position.x > transform.position.x && transform.position.x < xBound)
         {
             transform.Translate(Vector3.right * Time.deltaTime * cameraSpeed);
         }
