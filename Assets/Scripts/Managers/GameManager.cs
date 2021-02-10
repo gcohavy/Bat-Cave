@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
         POSTGAME
     }
 
-    GameState _currentGameState = GameState.RUNNING;
+    GameState _currentGameState = GameState.PREGAME;
 
     public Events.EventGameStateChange OnGameStateChange;
 

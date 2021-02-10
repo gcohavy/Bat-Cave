@@ -7,6 +7,7 @@ public class UIManager : Singleton<UIManager>
 {
     //get instances of Game Menus
     [SerializeField] private GameObject _gameOverMenu;
+    [SerializeField] private MainMenu _mainMenu;
 
     void Start()
     {
@@ -19,5 +20,11 @@ public class UIManager : Singleton<UIManager>
         {
             _gameOverMenu.gameObject.SetActive(true);
         }
+    }
+
+    //Main Menu
+    public void StartButton()
+    {
+        _mainMenu.MenuMenuExit();
     }
 }

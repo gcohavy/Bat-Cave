@@ -4,30 +4,48 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    float delay = 1;
-    [SerializeField] private GameObject _spikePrefab;
+    float delay = 5;
     
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Spawn());
+        StartCoroutine("Spawn");
     }
 
-    void SpawnSpike()
+    void SetSpike()
     {
-        _spikePrefab.transform.position = ReturnRandomSpawnPosition();
-        _spikePrefab.gameObject.SetActive(true);
+        GameObject Spike = ObjectPooler.SharedInstance.GetPooledObject();
+        bool topOrBottom = ReturnTopOrBottom();
+        Spike.transform.position = ReturnRandomSpawnPosition(topOrBottom);
+        Spike.transform.rotation = ReturnSpawnRotation(topOrBottom);
+        Spike.gameObject.SetActive(true);
     }
 
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(delay);
-        SpawnSpike();
-        delay -= 0.1f;
+        while(GameManager.Instance.CurrentGameState == GameManager.GameState.RUNNING)
+        {
+            yield return new WaitForSeconds(delay);
+            SetSpike();
+            SetSpike();
+            delay -= 0.05f;
+        }
+        
     }
 
-    Vector3 ReturnRandomSpawnPosition()
+    Vector3 ReturnRandomSpawnPosition(bool top)
     {
-        return new Vector3(Random.Range(-8, 8), 0, Random.Range(15,12));
+        float yPos = top ? -2.8f : 2.8f;
+        return new Vector3(Random.Range(-8, 8), yPos, Random.Range(15,12));
+    }
+
+    Quaternion ReturnSpawnRotation(bool top)
+    {
+        return Quaternion.Euler(top ? -90 : 90, 0 , 0);
+    }
+
+    bool ReturnTopOrBottom()
+    {
+        return Random.Range(0, 100) > 50;
     }
 }
