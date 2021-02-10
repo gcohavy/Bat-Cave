@@ -1048,7 +1048,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 293826641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 453154110}
+        m_MethodName: StartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &293826641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverMenu: {fileID: 1236155876}
+  _mainMenu: {fileID: 506102719}
 --- !u!4 &453154111
 Transform:
   m_ObjectHideFlags: 0
@@ -1909,6 +1921,7 @@ GameObject:
   - component: {fileID: 506102714}
   - component: {fileID: 506102713}
   - component: {fileID: 506102718}
+  - component: {fileID: 506102719}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -2052,6 +2065,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &506102719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506102711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56cab3a8568b97f408b8f3daaa10fdb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMenuAnimation: {fileID: 506102718}
+  _mainMenuEnter: {fileID: 7400000, guid: 4b84e1c78437d614f825629e53ffa4cc, type: 2}
+  _mainMenuExit: {fileID: 7400000, guid: 0e06b9bf628dc4e4cbd2917ec4a283de, type: 2}
+  _titleTextAnimation: {fileID: 7400000, guid: 9948459f58a17f5418e6fd5f037c49e6, type: 2}
 --- !u!1 &506981726
 GameObject:
   m_ObjectHideFlags: 0
@@ -6130,7 +6159,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
