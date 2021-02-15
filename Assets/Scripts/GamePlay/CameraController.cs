@@ -17,13 +17,17 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(player.transform.position.x < transform.position.x && transform.position.x > -xBound)
+        if(GameManager.Instance.CurrentGameState == GameManager.GameState.RUNNING)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * cameraSpeed);
+            if(player.transform.position.x < transform.position.x && transform.position.x > -xBound)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * cameraSpeed);
+            }
+            else if(player.transform.position.x > transform.position.x && transform.position.x < xBound)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * cameraSpeed);
+            }
         }
-        else if(player.transform.position.x > transform.position.x && transform.position.x < xBound)
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * cameraSpeed);
-        }
+            
     }
 }

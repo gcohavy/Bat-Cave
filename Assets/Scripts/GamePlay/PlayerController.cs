@@ -43,12 +43,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.rotation = Quaternion.Euler(0,0,-40);
+            transform.rotation = Quaternion.Euler(0,0,40);
             playerRb.AddForce(Vector3.left * sideStep);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.rotation = Quaternion.Euler(0,0,40);
+            transform.rotation = Quaternion.Euler(0,0,-40);
             playerRb.AddForce(Vector3.right * sideStep);
         }
     }
