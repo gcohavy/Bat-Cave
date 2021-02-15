@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    private float speed = 5;
-    private float zBound = -100;
+    private float speed = 10;
+    private float zBound = -50;
 
     // Update is called once per frame
     void Update()

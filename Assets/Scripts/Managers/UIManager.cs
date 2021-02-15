@@ -8,6 +8,7 @@ public class UIManager : Singleton<UIManager>
     //get instances of Game Menus
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private MainMenu _mainMenu;
+    [SerializeField] private PregameMenu _pregameMenu;
 
     void Start()
     {
@@ -20,11 +21,22 @@ public class UIManager : Singleton<UIManager>
         {
             _gameOverMenu.gameObject.SetActive(true);
         }
+
+        else if (currentState == GameManager.GameState.RUNNING && previousState == GameManager.GameState.PREGAME)
+        {
+            _pregameMenu.gameObject.SetActive(false);
+        }
     }
 
     //Main Menu
     public void StartButton()
     {
         _mainMenu.MenuMenuExit();
+    }
+
+    //Pregame Menu
+    public void SetPregameMenuActive()
+    {
+        _pregameMenu.gameObject.SetActive(true);
     }
 }

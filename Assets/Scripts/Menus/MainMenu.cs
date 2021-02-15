@@ -39,6 +39,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnMenuExitComplete()
     {
+        UIManager.Instance.SetPregameMenuActive();
         gameObject.SetActive(false);
     }
 }

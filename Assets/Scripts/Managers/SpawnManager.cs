@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    float delay = 5;
+    float delay = 3;
     
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("Spawn");
+        GameManager.Instance.OnGameStateChange.AddListener(HandleGameStateChange);
     }
 
     void SetSpike()
@@ -25,10 +25,11 @@ public class SpawnManager : MonoBehaviour
     {
         while(GameManager.Instance.CurrentGameState == GameManager.GameState.RUNNING)
         {
+            Debug.Log("Spawning Spike in: " + delay + " seconds");
             yield return new WaitForSeconds(delay);
             SetSpike();
             SetSpike();
-            delay -= 0.05f;
+            if(delay > 0.3f) delay -= 0.05f;
         }
         
     }
@@ -47,5 +48,13 @@ public class SpawnManager : MonoBehaviour
     bool ReturnTopOrBottom()
     {
         return Random.Range(0, 100) > 50;
+    }
+
+    void HandleGameStateChange(GameManager.GameState currentState, GameManager.GameState previousState)
+    {
+        if(currentState == GameManager.GameState.RUNNING)
+        {
+            StartCoroutine("Spawn");
+        }
     }
 }

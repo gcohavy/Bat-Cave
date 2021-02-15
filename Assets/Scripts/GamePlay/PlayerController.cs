@@ -7,10 +7,15 @@ public class PlayerController : MonoBehaviour
     private float upForce = 500;
     private float sideStep = 500;
     Rigidbody playerRb;
+    Vector3 startingPosition;
 
     void Start()
     {
         playerRb = gameObject.GetComponent<Rigidbody>();
+        GameManager.Instance.OnGameStateChange.AddListener(HandleGameStateChange);
+
+        startingPosition = transform.position;
+        playerRb.useGravity = false;
     }
 
     void Update()
@@ -45,6 +50,15 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0,0,40);
             playerRb.AddForce(Vector3.right * sideStep);
+        }
+    }
+
+    void HandleGameStateChange(GameManager.GameState currentState, GameManager.GameState previousState)
+    {
+        if(currentState == GameManager.GameState.RUNNING)
+        {
+            transform.position = startingPosition;
+            playerRb.useGravity = true;
         }
     }
 }
