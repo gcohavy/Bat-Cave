@@ -37,5 +37,20 @@ public class GameManager : Singleton<GameManager>
         CurrentGameState = state;
 
         OnGameStateChange.Invoke(CurrentGameState, previousGameState);
+
+        if(CurrentGameState == GameState.RUNNING && previousGameState == GameState.PREGAME)
+        {
+            Debug.Log("Starting Game Manager Coroutine");
+            StartCoroutine("IncrementScore");
+        }
+    }
+
+    IEnumerator IncrementScore()
+    {
+        while(CurrentGameState == GameState.RUNNING)
+        {
+            yield return new WaitForSeconds(1.5f);
+            score++;
+        }
     }
 }

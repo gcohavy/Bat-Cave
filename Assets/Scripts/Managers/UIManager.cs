@@ -9,6 +9,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private MainMenu _mainMenu;
     [SerializeField] private PregameMenu _pregameMenu;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class UIManager : Singleton<UIManager>
         else if (currentState == GameManager.GameState.RUNNING && previousState == GameManager.GameState.PREGAME)
         {
             _pregameMenu.gameObject.SetActive(false);
+            _scoreText.gameObject.SetActive(true);
         }
     }
 

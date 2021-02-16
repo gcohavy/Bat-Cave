@@ -5,14 +5,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Rigidbody player;
-    private float cameraSpeed = 2;
+    private float cameraSpeed = 5;
     private float xBound = 7;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float yBound = 3;
 
     // Update is called once per frame
     void LateUpdate()
@@ -26,6 +21,14 @@ public class CameraController : MonoBehaviour
             else if(player.transform.position.x > transform.position.x && transform.position.x < xBound)
             {
                 transform.Translate(Vector3.right * Time.deltaTime * cameraSpeed);
+            }
+            else if(player.transform.position.y > transform.position.y && transform.position.y < yBound)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * cameraSpeed);
+            }
+            else if(player.transform.position.y < transform.position.y && transform.position.y > -yBound)
+            {
+                transform.Translate(Vector3.down * Time.deltaTime * cameraSpeed);
             }
         }
             
