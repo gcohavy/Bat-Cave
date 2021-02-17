@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     float delay = 3;
+    float xSpawnRange = 8.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(delay);
             SetSpike();
             SetSpike();
-            if(delay > 0.3f) delay -= 0.05f;
+            if(delay > 0.5f) delay -= 0.05f;
         }
         
     }
@@ -37,7 +38,7 @@ public class SpawnManager : MonoBehaviour
     Vector3 ReturnRandomSpawnPosition(bool top)
     {
         float yPos = top ? -2.8f : 2.8f;
-        return new Vector3(Random.Range(-8, 8), yPos, Random.Range(15,12));
+        return new Vector3(Random.Range(-xSpawnRange, xSpawnRange), yPos, Random.Range(20,25));
     }
 
     Quaternion ReturnSpawnRotation(bool top)

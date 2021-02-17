@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float upForce = 500;
-    private float sideStep = 500;
+    private float upForce = 3000;
+    private float sideStep = 2000;
     Rigidbody playerRb;
     Vector3 startingPosition;
 
