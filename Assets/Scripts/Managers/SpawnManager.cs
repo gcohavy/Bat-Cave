@@ -6,6 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     float delay = 3;
     float xSpawnRange = 8.5f;
+
+    [SerializeField] private AudioSource _sonarAudioSource;
+    [SerializeField] private AudioClip _sonarSound;
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,8 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(delay);
             SetSpike();
             SetSpike();
+            if(!_sonarAudioSource.isPlaying)
+                PlaySonar();
             if(delay > 0.5f) delay -= 0.05f;
         }
         
@@ -49,6 +54,13 @@ public class SpawnManager : MonoBehaviour
     bool ReturnTopOrBottom()
     {
         return Random.Range(0, 100) > 50;
+    }
+
+    void PlaySonar()
+    {
+        _sonarAudioSource.Stop();
+        _sonarAudioSource.clip = _sonarSound;
+        _sonarAudioSource.Play();
     }
 
     void HandleGameStateChange(GameManager.GameState currentState, GameManager.GameState previousState)
