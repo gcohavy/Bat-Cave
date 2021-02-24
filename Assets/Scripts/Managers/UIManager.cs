@@ -36,6 +36,12 @@ public class UIManager : Singleton<UIManager>
         _mainMenu.MenuMenuExit();
     }
 
+    public void ReturnToMainMenu()
+    {
+        _mainMenu.gameObject.SetActive(true);
+        _mainMenu.MainMenuEnter();
+    }
+
     //Pregame Menu
     public void SetPregameMenuActive()
     {

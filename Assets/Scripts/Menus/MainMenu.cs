@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private AnimationClip _mainMenuEnter;
     [SerializeField] private AnimationClip _mainMenuExit;
     [SerializeField] private AnimationClip _titleTextAnimation;
+    [SerializeField] private AnimationClip _aboutTextIn;
+    [SerializeField] private AnimationClip _aboutTextOut;
 
     // Start is called before the first frame update
     void Start()
@@ -41,5 +43,15 @@ public class MainMenu : MonoBehaviour
     {
         UIManager.Instance.SetPregameMenuActive();
         gameObject.SetActive(false);
+    }
+
+    public void AboutTextIn()
+    {
+        StartAnimation(_aboutTextIn);
+    }
+
+    public void AboutTextOut()
+    {
+        StartAnimation(_aboutTextOut);
     }
 }

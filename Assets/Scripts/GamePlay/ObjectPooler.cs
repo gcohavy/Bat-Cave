@@ -37,4 +37,12 @@ public class ObjectPooler : MonoBehaviour
         
         return null;
     }
+
+    public void ResetAllInactive()
+    {
+        for(int i = 0; i < pooledObjects.Count; i++)
+        {
+            pooledObjects[i].SetActive(false);
+        }
+    }
 }

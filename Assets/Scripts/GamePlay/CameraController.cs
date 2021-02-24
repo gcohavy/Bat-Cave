@@ -10,6 +10,13 @@ public class CameraController : MonoBehaviour
     private float xBound = 7;
     private float yBound = 2;
     float accuracy = 0.2f;
+    private Vector3 originalPosition;
+
+    void Start()
+    {
+        GameManager.Instance.OnGameStateChange.AddListener(HandleGameStateChange);
+        originalPosition = transform.position;
+    }
 
     // Update is called once per frame
     void LateUpdate()
@@ -47,5 +54,13 @@ public class CameraController : MonoBehaviour
             }
         }
             
+    }
+
+    void HandleGameStateChange(GameManager.GameState currentState, GameManager.GameState previousState)
+    {
+        if(currentState == GameManager.GameState.PREGAME && previousState == GameManager.GameState.POSTGAME)
+        {
+            transform.position = originalPosition;
+        }
     }
 }

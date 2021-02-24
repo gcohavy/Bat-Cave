@@ -43,6 +43,10 @@ public class GameManager : Singleton<GameManager>
             Debug.Log("Starting Game Manager Coroutine");
             StartCoroutine("IncrementScore");
         }
+        else if (CurrentGameState == GameState.PREGAME && previousGameState == GameState.POSTGAME)
+        {
+            score = 0;
+        }
     }
 
     IEnumerator IncrementScore()

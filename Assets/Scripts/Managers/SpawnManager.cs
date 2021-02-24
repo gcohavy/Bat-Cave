@@ -69,5 +69,10 @@ public class SpawnManager : MonoBehaviour
         {
             StartCoroutine("Spawn");
         }
+        else if (currentState == GameManager.GameState.PREGAME && previousState == GameManager.GameState.POSTGAME)
+        {
+            delay = 3;
+            ObjectPooler.SharedInstance.ResetAllInactive();
+        }
     }
 }
