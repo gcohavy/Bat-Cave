@@ -60,5 +60,10 @@ public class PlayerController : MonoBehaviour
             transform.position = startingPosition;
             playerRb.useGravity = true;
         }
+        else if (currentState == GameManager.GameState.PREGAME && previousState == GameManager.GameState.POSTGAME)
+        {
+            transform.position = startingPosition;
+            playerRb.useGravity = false;
+        }
     }
 }

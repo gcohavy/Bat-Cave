@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private AudioSource _sonarAudioSource;
     [SerializeField] private AudioClip _sonarSound;
+
+    public Material[] materials;
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class SpawnManager : MonoBehaviour
         bool topOrBottom = ReturnTopOrBottom();
         Spike.transform.position = ReturnRandomSpawnPosition(topOrBottom);
         Spike.transform.rotation = ReturnSpawnRotation(topOrBottom);
+        Spike.GetComponent<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
         Spike.gameObject.SetActive(true);
     }
 
