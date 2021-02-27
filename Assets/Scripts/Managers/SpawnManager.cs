@@ -63,6 +63,7 @@ public class SpawnManager : MonoBehaviour
     {
         _sonarAudioSource.Stop();
         _sonarAudioSource.clip = _sonarSound;
+        _sonarAudioSource.time = 3.2f;
         _sonarAudioSource.Play();
     }
 

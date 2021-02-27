@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartAnimation(_titleTextAnimation);
+        TitleTextAnimation();
     }
 
     void StartAnimation(AnimationClip anim)
@@ -53,5 +53,10 @@ public class MainMenu : MonoBehaviour
     public void AboutTextOut()
     {
         StartAnimation(_aboutTextOut);
+    }
+
+    public void TitleTextAnimation()
+    {
+        StartAnimation(_titleTextAnimation);
     }
 }

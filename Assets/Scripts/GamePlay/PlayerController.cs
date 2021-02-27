@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerRb;
     Vector3 startingPosition;
 
+    [SerializeField] private AudioSource _playerAudio;
+
     void Start()
     {
         playerRb = gameObject.GetComponent<Rigidbody>();
@@ -29,6 +31,9 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameManager.Instance.UpdateState(GameManager.GameState.POSTGAME);
+        _playerAudio.Stop();
+        _playerAudio.time = 1.8f;
+        _playerAudio.Play();
     }
 
     void MovePlayer()
@@ -53,17 +58,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ResetPosition(bool useGrav)
+    {
+        transform.position = startingPosition;
+        transform.rotation = Quaternion.identity;
+        playerRb.useGravity = useGrav;
+    }
+
     void HandleGameStateChange(GameManager.GameState currentState, GameManager.GameState previousState)
     {
         if(currentState == GameManager.GameState.RUNNING)
         {
-            transform.position = startingPosition;
-            playerRb.useGravity = true;
+            ResetPosition(true);
         }
         else if (currentState == GameManager.GameState.PREGAME && previousState == GameManager.GameState.POSTGAME)
         {
-            transform.position = startingPosition;
-            playerRb.useGravity = false;
+            ResetPosition(false);
         }
     }
 }

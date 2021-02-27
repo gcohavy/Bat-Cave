@@ -5,26 +5,21 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip _menuAmbience;
-    [SerializeField] private AudioClip _gameSound;
+    [SerializeField] private AudioClip _music;
+    private float[] _startTimes = {1, 120, 488.5f, 598, 765, 1034, 1322, 1470, 2020, 2232};
+
     // Start is called before the first frame update
     void Start()
     {
-        PlayMenuMusic();
+        PlayRandomSong();
         GameManager.Instance.OnGameStateChange.AddListener(HandleGameStateChange);
     }
 
-    void PlayMenuMusic()
+    void PlayRandomSong()
     {
         _audioSource.Stop();
-        _audioSource.clip = _menuAmbience;
-        _audioSource.Play();
-    }
-
-    void PlayGameMusic()
-    {
-        _audioSource.Stop();
-        _audioSource.clip = _gameSound;
+        _audioSource.clip = _music;
+        _audioSource.time = _startTimes[Random.Range(0, _startTimes.Length)];
         _audioSource.Play();
     }
 
@@ -32,11 +27,11 @@ public class MusicManager : MonoBehaviour
     {
         if(currentState == GameManager.GameState.RUNNING && previousState == GameManager.GameState.PREGAME)
         {
-            PlayGameMusic();
+            PlayRandomSong();
         }
         else if(currentState == GameManager.GameState.POSTGAME && previousState == GameManager.GameState.RUNNING)
         {
-            PlayMenuMusic();
+            PlayRandomSong();
         }
     }
 }
