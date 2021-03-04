@@ -17,6 +17,14 @@ public class MainMenu : MonoBehaviour
         TitleTextAnimation();
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            MainMenuExit();
+        }
+    }
+
     void StartAnimation(AnimationClip anim)
     {
         _mainMenuAnimation.Stop();
@@ -24,7 +32,7 @@ public class MainMenu : MonoBehaviour
         _mainMenuAnimation.Play();
     }
 
-    public void MenuMenuExit()
+    public void MainMenuExit()
     {
         StartAnimation(_mainMenuExit);
     }

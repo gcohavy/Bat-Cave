@@ -33,7 +33,7 @@ public class UIManager : Singleton<UIManager>
     //Main Menu
     public void StartButton()
     {
-        _mainMenu.MenuMenuExit();
+        _mainMenu.MainMenuExit();
     }
 
     public void ReturnToMainMenu()
@@ -45,6 +45,7 @@ public class UIManager : Singleton<UIManager>
     //Pregame Menu
     public void SetPregameMenuActive()
     {
-        _pregameMenu.gameObject.SetActive(true);
+        _pregameMenu.SetToActive();
+        _pregameMenu.BeginInstructionAnimation();
     }
 }

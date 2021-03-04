@@ -31,9 +31,12 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameManager.Instance.UpdateState(GameManager.GameState.POSTGAME);
-        _playerAudio.Stop();
-        _playerAudio.time = 1.8f;
-        _playerAudio.Play();
+        if(!_playerAudio.isPlaying)
+        {
+            _playerAudio.Stop();
+            _playerAudio.time = 1.8f;
+            _playerAudio.Play();
+        }
     }
 
     void MovePlayer()
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = startingPosition;
         transform.rotation = Quaternion.identity;
+        playerRb.angularVelocity = Vector3.zero;
         playerRb.useGravity = useGrav;
     }
 
