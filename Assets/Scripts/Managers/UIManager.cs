@@ -1,5 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/// <summary>
+/// This class serves to manage all the UI elements
+/// This is good practice for expanding the game in the future
+/// </summary>
+
 using UnityEngine;
 using TMPro;
 
@@ -11,11 +14,14 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private PregameMenu _pregameMenu;
     [SerializeField] private TextMeshProUGUI _scoreText;
 
+    //Start is called before the first frame
     void Start()
     {
+        //Subscribe to the StateChange event
         GameManager.Instance.OnGameStateChange.AddListener(HandleGameStateChange);
     }
 
+    //Method to handle GameState change
     void HandleGameStateChange(GameManager.GameState currentState, GameManager.GameState previousState)
     {
         if(currentState == GameManager.GameState.POSTGAME && previousState == GameManager.GameState.RUNNING)

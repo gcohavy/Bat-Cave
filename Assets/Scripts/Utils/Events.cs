@@ -1,4 +1,8 @@
-﻿using UnityEngine.Events;
+﻿/// <summary>
+/// Class to place all events into.<!-- Currently only 1, but good practice for expanding the game-->
+/// </summary>
+
+using UnityEngine.Events;
 
 public class Events 
 {
